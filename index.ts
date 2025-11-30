@@ -1,10 +1,10 @@
 import Fuse from "fuse.js";
 import type { IFuseOptions } from "fuse.js";
-import districts from "./data/districts.json";
-import counties from "./data/counties.json";
-import subCounties from "./data/sub_counties.json";
-import parishes from "./data/parishes.json";
-import villages from "./data/villages.json";
+import districts from "./data/districts.json" with { type: "json" };
+import counties from "./data/counties.json" with { type: "json" };
+import subCounties from "./data/sub_counties.json" with { type: "json" };
+import parishes from "./data/parishes.json" with { type: "json" };
+import villages from "./data/villages.json" with { type: "json" };
 
 interface District {
   id: string;
@@ -299,6 +299,11 @@ function parseQuery(query: string): string[] {
 // Multi-location search with hierarchical filtering
 function searchAdministrativeUnits(query: string, maxResults: number = 100) {
   const terms = parseQuery(query);
+
+  // If no terms, return empty array
+  if (terms.length === 0) {
+    return [];
+  }
 
   // If single term, use simple fuzzy search
   if (terms.length === 1) {
