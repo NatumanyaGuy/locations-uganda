@@ -38,7 +38,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/NatumanyaGuy/locations-uganda"
   },
   "devDependencies": {
     "@types/bun": "latest",
